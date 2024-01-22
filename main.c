@@ -61,6 +61,7 @@ int main(void) {
         counter++;
 
         clearFlag_interuptFromButton1();
+        init_LED_red_PTA29_Out();
 
         if (counter >= limit_value) {
             __ASM_VOLATILE ("svc 0");
@@ -73,5 +74,6 @@ int main(void) {
 }
 
 __INTERRUPT_SVC void SVC_Handler() {
+    toggle_LED_red();
     accumulator += counter;
 }
